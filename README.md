@@ -1,2 +1,2 @@
 # Stage
-Amazing
+Amazing stage
