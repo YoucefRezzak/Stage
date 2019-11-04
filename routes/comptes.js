@@ -74,7 +74,8 @@ router.post('/',async (req,res)=>{
     let compte = new Compte({
         nom: req.body.nom,
         mat: req.body.mat,
-        somme: req.body.somme
+        somme: req.body.somme,
+        soldein: req.body.soldein
     });
     console.log('i got it ! '+req.nom);
     //compteer :
