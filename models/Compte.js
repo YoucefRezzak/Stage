@@ -17,6 +17,10 @@ let compteSchema = mongoose.Schema({
     soldein:{
         type: Number,
         default: 0
+    },
+    numClass:{
+        type: Number,
+        required: true
     }
 });
 module.exports = mongoose.model('Compte',compteSchema);

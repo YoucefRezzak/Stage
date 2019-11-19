@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let Compte = require('../models/Compte');
+let Classe = require('../models/Classe');
 
 router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
@@ -17,14 +17,13 @@ router.get('/', async (req,res)=>{
     try{
         //find retourne les donnée du type compte (le model)
         console.log('yadra?');
-        let compte = await Compte.find();
-        res.json(compte);
+        let classe = await Classe.find();
+        res.json(classe);
     }catch(err){
         res.json({message : err});
     }
 });
-
-//recupere une donnée précise : 
+/*
 router.get('/:comteId',async (req,res)=>{
     try{
     let compte = await Compte.findById(req.params.compteId);
@@ -32,7 +31,7 @@ router.get('/:comteId',async (req,res)=>{
     }catch(err){
         res.json({message: err});
     }
-});
+});*/
 /*
 //supprimer une donnée : 
 router.delete('/:compteId',async (req,res)=>{
@@ -43,24 +42,24 @@ router.delete('/:compteId',async (req,res)=>{
             res.json({message: err});
         }
 })*/
-router.delete('/compteTitle',async (req,res)=>{
+router.delete('/num',async (req,res)=>{
     try{
-        let removedcompte = await compte.remove({title : req.params.compteTitle});
-        res.json(removedcompte);
+        let removedclasse = await Classe.remove({title : req.params.num});
+        res.json(removedclasse);
         }catch(err){
             res.json({message: err});
         }
 })
 //update une donnée : 
-router.patch('/:compteMat',async (req,res) => {
+router.patch('/:num',async (req,res) => {
     try{
-        console.log('update!' + req.body.mat);
+        console.log('update!' + req.body.num);
         res.setHeader( 'Access-Control-Allow-Headers', 'Accept,Accept-Language,Content-Language,Content-Type');
-        let updatedcompte = await Compte.updateOne(
-            {mat : req.params.compteMat},
+        let updatedClasse = await Classe.updateOne(
+            {num : req.params.num},
             {$set :{nom : req.body.nom , somme : req.body.somme}}
             );
-        res.json(updatedcompte);
+        res.json(updatedClasse);
         }catch(err){
             res.json({message: err});
         }
@@ -71,20 +70,18 @@ router.post('/',async (req,res)=>{
     console.log('3aytoli!' + req);
     res.setHeader( 'Access-Control-Allow-Headers', 'Accept,Accept-Language,Content-Language,Content-Type');
     //recevoir : 
-    let compte = new Compte({
+    let classe = new Classe({
         nom: req.body.nom,
-        mat: req.body.mat,
+        num: req.body.num,
         somme: req.body.somme,
-        soldein: req.body.soldein,
-        numClass: req.body.numClass
     });
     console.log('i got it ! '+req.nom);
     //compteer :
     try{
         //compteer en bdd:
-        const savedcompte = await compte.save();
+        const savedClass = await classe.save();
         //compteer reponse compteman : 
-        res.json(savedcompte);
+        res.json(savedClass);
     }catch(err){
         res.json({message : err});
     }

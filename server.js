@@ -17,6 +17,9 @@ app.use('/comptes',comptesRoute);
 let ecrituresRoute = require('./routes/ecritures');
 app.use('/ecritures',ecrituresRoute);
 
+let classesRoutes = require('./routes/classes');
+app.use('/classes',classesRoutes);
+
 //Routes :
 app.get('/',(req,res)=>{
     res.send('working!');
