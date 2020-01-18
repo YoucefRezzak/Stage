@@ -76,7 +76,7 @@ router.post('/',async (req,res)=>{
         mat: req.body.mat,
         somme: req.body.somme,
         soldein: req.body.soldein,
-        numClass: req.body.numClass
+        classe: req.body.classe
     });
     console.log('i got it ! '+req.nom);
     //compteer :

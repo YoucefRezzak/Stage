@@ -18,7 +18,7 @@ let compteSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    numClass:{
+    classe:{
         type: Number,
         required: true
     }
